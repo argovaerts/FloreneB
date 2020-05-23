@@ -1,6 +1,6 @@
 # FlorenceB
 
-FlorenceB is a extremely minimal static site generator, mostly just for personal use. Under the hood it leverages wget, PHP, Bulma and CMD (as I work on Windows). As an editor I use Visual Studio Code (highly recommended).
+FlorenceB is an extremely minimal static site generator, mostly just for personal use. Under the hood it leverages wget, PHP, Bulma and CMD (as I work on Windows). As an editor I use Visual Studio Code (highly recommended).
 
 ## Installation
 
