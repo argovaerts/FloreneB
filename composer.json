@@ -1,0 +1,19 @@
+{
+    "name": "argovaerts/FlorenceB",
+    "description": "A minimal static site generator build with wget, PHP, Bulma and CMD on Windows",
+    "type":"project",
+    "license": "BlueOak-1.0.0",
+    "authors": [
+        {
+            "name": "Arne Govaerts",
+            "email": "arne@q4.re",
+            "homepage": "https://q4.re",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "symfony/yaml": "^5.0",
+        "erusev/parsedown": "^1.7",
+        "divineomega/php-summary": "^2.0"
+    }
+}

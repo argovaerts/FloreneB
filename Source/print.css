@@ -1,0 +1,66 @@
+* {
+    background-color: #fff !important;
+    color: #222;
+  }
+  
+  html, body {
+    font-size: 10pt !important;
+    font-family: Helvetica, sans-serif !important;
+  }
+  
+  @page {
+    margin: 0.6in 0.5in;
+  }
+  
+  .limit,
+  body > section {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  
+  h3,
+  a,
+  .h-feed .h-entry,
+  code,
+  pre {
+    border: none;
+  }
+  
+  p, li, blockquote, figure {
+    page-break-inside: avoid !important;
+  }
+  
+  a {
+    color: #000;
+  }
+  
+  td, th {
+    border: 1pt solid #666;
+  }
+  .noprint {
+    display:none !important;
+  
+  }
+  
+  code, pre {
+     max-width: 96%;
+     page-break-inside: auto;
+     font-family: "Courier", "Courier New", monospace !important;
+  }
+  
+  pre {
+    border: 1pt dotted #666;
+    padding: 0.6em;
+  }
+  
+  .h-feed .h-entry {
+    page-break-after: always;
+  } 
+
+  nav, footer {
+    display: none;
+  }
