@@ -44,7 +44,7 @@
             "@type": "Person",
             "name": "Arne Govaerts",
             "url": "https://q4.re",
-            "image": "https://q4.re/assets/Arne.JPG",
+            "image": "https://q4.re/assets/Arne.jpg",
             "sameAs": [
                 "https://www.facebook.com/argovaerts",
                 "https://www.linkedin.com/in/argovaerts/"
@@ -148,7 +148,7 @@
     <script src="https://app.indiemetrics.net/hello.js"></script>
     <script src="assets/stats.js"></script>
     <noscript><img src="https://app.indiemetrics.net/event/add?create=q4_re_1587111381873&type=pageview" alt="Indiemetrics"></noscript>
-    <script src="assets/register-service-workers.js"></script>
+    <script src="register-service-workers.js"></script>
 </body>
 </html>
 
