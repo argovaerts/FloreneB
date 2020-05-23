@@ -1,6 +1,6 @@
 {
     "name": "argovaerts/FlorenceB",
-    "description": "A minimal static site generator build with wget, PHP, Bulma and CMD on Windows",
+    "description": "A minimal static site generator build with wget, PHP, rclone and CMD on Windows",
     "type":"project",
     "license": "BlueOak-1.0.0",
     "authors": [

@@ -4,7 +4,10 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Personal website of Arne Govaerts</title>
-    <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css" media="screen"/>
+
+    <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css" media="screen">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" media="screen">
+    <link rel="stylesheet" href="terminal.css" media="screen">
     <link rel="stylesheet" href="print.css" media="print"/>
     <link rel="icon" href="Arne.jpg"/>
 
@@ -47,37 +50,19 @@
     </script>
 </head>
 <body class="h-feed">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item u-url" href="https://q4.re">
-                Arne Govaerts
-            </a>
+    <header>
+        <nav>
+            <div><a class="navbar-item u-url" href="https://q4.re">Arne Govaerts</a></div>
+            <div><a href="mailto:arne@q4.re" class="navbar-item" rel="me">arne@q4.re</a></div>
+        </nav>
+    </header>
 
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            </a>
-        </div>
-
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <a href="" class="navbar-item">
-                    Index
-                </a>
-                <a href="mailto:arne@q4.re" class="navbar-item" rel="me">
-                    arne@q4.re
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <section class="section has-background-grey-dark has-text-white">
-        <div class="container">
-            <h1 class="title has-text-white p-name">Arne Govaerts</h1>
-            <h2 class="subtitle has-text-white">
+    <main>
+        <section>
+            <h1 class="p-name">Arne Govaerts</h1>
+            <p>
                 Hi! Welcome on my personal website. I'm a CS student, <a href="https://indiemetrics.net">indiehacker</a> and indieweb enthousiast.
-            </h2>
+            </p>
             <ul>
                 <li>Personal email: <a href="mailto:arne@q4.re">arne@q4.re</a></li>
                 <li>Work email: <a href="mailto:arne@indiemetrics.net">arne@indiemetrics.net</a></li>
@@ -88,76 +73,58 @@
                     is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
                 </li>
             </ul>
-        </div>
-    </section>
+        </section>
 
-    <section class="section">
-        <div class="container">
-            <div class="tile is-ancestor">
-                <div class="tile is-vertical is-12">
-                    <div class="tile is-parent">
-                        <?php
-                        require '../vendor/autoload.php';
+        <section>
+            <?php
+            require '../vendor/autoload.php';
 
-                        use Symfony\Component\Yaml\Yaml;
-                        use DivineOmega\PHPSummary\SummaryTool;
+            use Symfony\Component\Yaml\Yaml;
+            use DivineOmega\PHPSummary\SummaryTool;
 
-                        $Parsedown = new Parsedown();
+            $Parsedown = new Parsedown();
 
-                        $files = glob(__DIR__ . '/Posts/*.md');
-                        $files = array_reverse($files);
-                        foreach($files as $file) {
-                            $id = basename($file);
-                            $id = str_replace('.md', '', $id);
+            $files = glob(__DIR__ . '/Posts/*.md');
+            $files = array_reverse($files);
+            foreach($files as $file) {
+                $id = basename($file);
+                $id = str_replace('.md', '', $id);
 
-                            $file = file_get_contents($file);
-                            $yaml = get_string_between($file, '---', '---');
+                $file = file_get_contents($file);
+                $yaml = get_string_between($file, '---', '---');
 
-                            $content = str_replace($yaml, '' , $file);
-                            $content = str_replace('------', '', $content);
-                            $content = $Parsedown->text($content);
-                            $summary = strip_tags($content);
-                            $summary = (new SummaryTool($content))->getSummary();
+                $content = str_replace($yaml, '' , $file);
+                $content = str_replace('------', '', $content);
+                $content = $Parsedown->text($content);
+                $summary = strip_tags($content);
+                $summary = (new SummaryTool($content))->getSummary();
 
-                            if(strlen($summary) > 10) {
-                                $summary = '<p class="p-summary box">' . strip_tags($summary) . '</p>';
-                            }
-                            else {
-                                $summary = '';
-                            }
+                if(strlen($summary) > 10) {
+                    $summary = '<p class="p-summary box">' . strip_tags($summary) . '</p>';
+                }
+                else {
+                    $summary = '';
+                }
 
-                            $yaml = Yaml::parse($yaml);
+                $yaml = Yaml::parse($yaml);
 
-                            $article = '<div class="tile is-parent">
-                                <article class="tile is-child notification has-background-white-ter h-entry" id="' . $id . '" lang="' . $yaml['lang'] . '">
-                                    <p class="title p-name">' . $yaml['name'] . '</p>
-                                    <p class="subtitle">
-                                        Published by <a class="p-author h-card" href="https://q4.re">Arne Govaerts</a>
-                                        on <a class="u-url" href="#' . $id . '"><time class="dt-published" datetime="' . $yaml['date'] . '">' . $yaml['date'] . '</time></a>
-                                    </p>
-                                    ' . $summary . '
-                                    <div class="e-content">
-                                    ' . $content . '
-                                    </div>
-                                </article>
-                            </div>';
+                $article = '<article class="h-entry" id="' . $id . '" lang="' . $yaml['lang'] . '">
+                        <h2 class="p-name">' . $yaml['name'] . '</h2>
+                        <p>
+                            Published by <a class="p-author h-card" href="https://q4.re">Arne Govaerts</a>
+                            on <a class="u-url" href="#' . $id . '"><time class="dt-published" datetime="' . $yaml['date'] . '">' . $yaml['date'] . '</time></a>
+                        </p>
+                        ' . $summary . '
+                        <div class="e-content">
+                        ' . $content . '
+                        </div>
+                    </article>';
 
-                            echo $article;
-                        }
-                        ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer has-background-grey-dark has-text-white">
-        <div class="content has-text-centered">
-            <p>
-                <strong class="has-text-white">Q4.re</strong> by <a href="mailto:arne@q4.re">Arne Govaerts</a>. 
-            </p>
-        </div>
-    </footer>
+                echo $article;
+            }
+            ?>
+        </section>
+    </main>
 
     <script src="https://app.indiemetrics.net/hello.js"></script>
     <script src="stats.js"></script>
