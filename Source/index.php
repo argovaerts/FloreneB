@@ -80,7 +80,7 @@
             </h2>
             <ul>
                 <li>Personal email: <a href="mailto:arne@q4.re">arne@q4.re</a></li>
-                <li>Company email: <a href="mailto:arne@indiemetrics.net">arne@indiemetrics.net</a></li>
+                <li>Work email: <a href="mailto:arne@indiemetrics.net">arne@indiemetrics.net</a></li>
                 <li>LinkedIn: <a href="https://www.linkedin.com/in/argovaerts/">argovaerts</a></li>
                 <li>
                     License: Source code is licensed
